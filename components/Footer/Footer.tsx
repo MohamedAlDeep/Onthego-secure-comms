@@ -12,9 +12,21 @@ export default function Footer(){
     const router = useRouter()
 
     function handleDelete() {
+        // Remove cookies
         cookieStore.remove('username')
-        cookieStore.remove('uid')        
-        console.log("Cookies deleted")
+        cookieStore.remove('uid')
+        cookieStore.remove('privateKey')
+        cookieStore.remove('publicKey')
+        
+        // Remove key pairs from localStorage
+        localStorage.removeItem('privateKey')
+        localStorage.removeItem('publicKey')
+        localStorage.removeItem('revocationCertificate')
+        localStorage.removeItem('recipientKeys')
+        localStorage.removeItem('uid')
+        localStorage.removeItem('username')
+        
+        console.log("All data disposed (cookies and localStorage cleared)")
         router.push('/')
     }
     return (

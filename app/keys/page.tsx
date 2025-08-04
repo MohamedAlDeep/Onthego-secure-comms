@@ -7,11 +7,15 @@ import Footer from "@/components/Footer/Footer";
 import { Car } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
+import KeyGeneration from "./KeyGeneration";
+import RecipientKeys from "./RecipientKeys";
+
 
 export default async function Dashboard() {
     const cookieStore = await cookies()
     const username = cookieStore.get('username')
     const uid = cookieStore.get('uid')
+
     if(!username || !uid) {
         redirect("/", RedirectType.replace)
     }
@@ -29,41 +33,8 @@ export default async function Dashboard() {
                 </div>
 
                <div className="flex flex-row justify-center items-start w-full gap-4">
-                    <Card className="bg-slate-800/90 w-full max-w-3xl border-purple-500/20 backdrop-blur-sm border-2 text-white p-5 m-5" style={{ borderColor: '#9810FA' }}>
-                        <h1 className="flex justify-center items-center text-2xl font-bold mb-4">Add recipient public keys</h1>
-                        <Card className="h-45 bg-purple-500/20  border-purple-500/20 backdrop-blur-sm border-2 text-white p-5 m-5" style={{ borderColor: '#9810FA' }}>
-                                <div className="flex items-center justify-between ">
-                                   <textarea className='h-40 w-140 m-0 border-0' name="" id="" placeholder='Enter recipient public key here'></textarea>
-                                </div>
-                        </Card>
-                        <div className="flex justify-end">
-                            <Button className="w-40 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 m-5">
-                                Add Recipient
-                            </Button>
-                        </div>
-                    </Card>
-                    <Card className="bg-slate-800/90 w-full max-w-3xl border-purple-500/20 backdrop-blur-sm border-2 text-white p-5 m-5" style={{ borderColor: '#9810FA' }}>
-                        <h1 className="flex justify-center items-center text-2xl font-bold mb-4">Generate your key pairs</h1>
-                        <div>
-                            <Card className="bg-purple-500/20  border-purple-500/20 backdrop-blur-sm border-2 text-white p-5 m-5" style={{ borderColor: '#9810FA' }}>
-                                <div className="flex items-center justify-between">
-                                    <p>Public Key</p>
-                                    <Button className="w-40 bg-purple-500 hover:to-pink-700">Content</Button>
-                                </div>
-                            </Card>
-                            <Card className="bg-purple-500/20  border-purple-500/20 backdrop-blur-sm border-2 text-white p-5 m-5" style={{ borderColor: '#9810FA' }}>
-                                <div className="flex items-center justify-between ">
-                                    <p>Private Key</p>
-                                    <Button className="w-40 bg-purple-500  hover:to-pink-700 ">Content</Button>
-                                </div>
-                            </Card>
-                                <div className="flex justify-end">
-                                    <Button className="w-40 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 m-5">
-                                        Generate
-                                    </Button>
-                                </div>
-                        </div>
-                    </Card>
+                    <RecipientKeys />
+                    <KeyGeneration username={username.value} uid={uid.value} />
                 </div>
 
                 
