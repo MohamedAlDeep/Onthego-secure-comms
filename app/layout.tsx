@@ -28,10 +28,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Analytics/>
+     
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Analytics/>
         <CookiesProvider>{children}</CookiesProvider>
       </body>
     </html>
