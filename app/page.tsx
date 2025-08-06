@@ -12,6 +12,7 @@ import Link from "next/link"
 import { useLocalStorage } from "usehooks-ts"
 import { redirect } from "next/dist/server/api-utils"
 // import { db } from "./lib"
+import FooterAbt from '@/components/Footer/FooterAbt'
 
 export default function Page() {
   const [showPassword, setShowPassword] = useState(false)
@@ -158,7 +159,7 @@ export default function Page() {
           </div>
         </CardContent>
       </Card> 
-    
+    <FooterAbt/>
     </div>
   );
 }
